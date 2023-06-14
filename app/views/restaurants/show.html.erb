@@ -1,0 +1,25 @@
+<h2><%= @restaurant.name %></h2>
+<li><%= @restaurant.address %></li>
+<li><%= @restaurant.phone_number %></li>
+<li>Type : <%= @restaurant.category %></li>
+
+<%= link_to "Ajouter un avis",  new_restaurant_review_path(@restaurant) %>
+
+
+<%# le form n'a pu lieu d'exister ds l'arborescence de review si on le met ici%>
+<%# <%= simple_form_for([@restaurant, @review]) do |f| %>
+  <%# <%= f.input :rating %>
+  <%# <%= f.input :content %>
+  <%# <%= f.submit %>
+<%# <% end %>
+
+
+
+<div>
+<% @restaurant.reviews.each do |review| %>
+<p><%= review.rating %> - <%= review.content %></p>
+<% end %>
+</div>
+
+
+<%= link_to "Retour à la liste", restaurants_path %>
